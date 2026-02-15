@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "EcoAware",
+  "version": "1.0.0",
+  "description": "Know what you're really buying. Deterministic sustainability scoring with grounded AI narration.",
+  "permissions": [],
+  "host_permissions": [
+    "https://api.anthropic.com/*",
+    "https://api.elevenlabs.io/*"
+  ],
+  "action": {
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "Toggle EcoAware"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.amazon.com/*",
+        "https://www.amazon.co.uk/*",
+        "https://www.amazon.ca/*",
+        "https://www.amazon.de/*"
+      ],
+      "css": ["styles/panel.css"],
+      "js": [
+        "scripts/knowledge-loader.js",
+        "scripts/scraper.js",
+        "scripts/scoring-engine.js",
+        "scripts/ai-narrator.js",
+        "scripts/voice.js",
+        "scripts/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "knowledge/greenwashing_rules.json",
+        "knowledge/certifications.json",
+        "knowledge/category_model.json",
+        "knowledge/carbon_claims_policy.json"
+      ],
+      "matches": [
+        "https://www.amazon.com/*",
+        "https://www.amazon.co.uk/*",
+        "https://www.amazon.ca/*",
+        "https://www.amazon.de/*"
+      ]
+    }
+  ]
+}

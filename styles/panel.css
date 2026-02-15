@@ -1,0 +1,330 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+:root {
+  --eco-bg: #0f1a12;
+  --eco-surface: #162419;
+  --eco-surface-2: #1d3024;
+  --eco-border: #2a4a34;
+  --eco-text: #e8f0ea;
+  --eco-text-dim: #8fa898;
+  --eco-accent: #4ade80;
+  --eco-accent-dim: #22c55e;
+  --eco-warning: #fbbf24;
+  --eco-danger: #f87171;
+  --eco-positive: #4ade80;
+  --eco-radius: 14px;
+  --eco-radius-sm: 8px;
+  --eco-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(74,222,128,0.08);
+}
+
+#ecoaware-panel {
+  position: fixed; top: 80px; right: 20px; width: 340px;
+  max-height: calc(100vh - 120px);
+  background: var(--eco-bg); border: 1px solid var(--eco-border);
+  border-radius: var(--eco-radius); box-shadow: var(--eco-shadow);
+  z-index: 999999; font-family: 'DM Sans', -apple-system, sans-serif;
+  color: var(--eco-text); overflow-y: auto; overflow-x: hidden;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
+  scrollbar-width: thin; scrollbar-color: var(--eco-border) transparent;
+}
+#ecoaware-panel::-webkit-scrollbar { width: 4px; }
+#ecoaware-panel::-webkit-scrollbar-track { background: transparent; }
+#ecoaware-panel::-webkit-scrollbar-thumb { background: var(--eco-border); border-radius: 4px; }
+#ecoaware-panel.ecoaware-hidden { transform: translateX(380px) !important; opacity: 0 !important; pointer-events: none !important; animation: none !important; }
+
+.ecoaware-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 18px; border-bottom: 1px solid var(--eco-border);
+  background: linear-gradient(135deg, var(--eco-surface), var(--eco-bg));
+  border-radius: var(--eco-radius) var(--eco-radius) 0 0;
+  position: sticky; top: 0; z-index: 10;
+}
+.ecoaware-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; letter-spacing: -0.3px; }
+.ecoaware-logo-icon {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, var(--eco-accent), #16a34a);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; line-height: 1;
+}
+.ecoaware-close {
+  background: none; border: none; color: var(--eco-text-dim); cursor: pointer;
+  padding: 4px; border-radius: 6px; font-size: 18px; line-height: 1;
+  transition: all 0.15s; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+}
+.ecoaware-close:hover { background: var(--eco-surface-2); color: var(--eco-text); }
+
+.ecoaware-body { padding: 16px 18px; display: flex; flex-direction: column; gap: 12px; }
+
+.ecoaware-product-title {
+  font-size: 12px; color: var(--eco-text-dim); line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden; margin-bottom: 2px;
+}
+
+/* ---------- Product Type Tag ---------- */
+.ecoaware-type-tag {
+  display: inline-flex; padding: 3px 10px; border-radius: 12px; font-size: 11px; font-weight: 500;
+  background: rgba(99,102,241,0.1); color: #a78bfa; border: 1px solid rgba(99,102,241,0.2);
+  margin-bottom: 8px;
+}
+
+/* ---------- GREENWASHING ALERT ---------- */
+.ecoaware-greenwash-alert { border-radius: var(--eco-radius-sm); padding: 12px 14px; animation: ecoaware-pulse 2s ease-in-out 1; }
+.ecoaware-greenwash-alert.HIGH { background: rgba(248,113,113,0.1); border: 1px solid rgba(248,113,113,0.3); }
+.ecoaware-greenwash-alert.MEDIUM { background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25); }
+.ecoaware-gw-alert-header { font-size: 13px; font-weight: 700; margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+.ecoaware-greenwash-alert.HIGH .ecoaware-gw-alert-header { color: var(--eco-danger); }
+.ecoaware-greenwash-alert.MEDIUM .ecoaware-gw-alert-header { color: var(--eco-warning); }
+.ecoaware-gw-alert-summary { font-size: 12px; line-height: 1.45; color: var(--eco-text); opacity: 0.9; margin-bottom: 6px; }
+@keyframes ecoaware-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+/* ---------- Score Cards ---------- */
+.ecoaware-score-card {
+  background: var(--eco-surface); border: 1px solid var(--eco-border);
+  border-radius: var(--eco-radius-sm); padding: 14px; transition: border-color 0.2s;
+}
+.ecoaware-score-card:hover { border-color: var(--eco-accent-dim); }
+.ecoaware-score-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.ecoaware-score-label {
+  font-size: 12px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--eco-text-dim); display: flex; align-items: center; gap: 6px;
+}
+.ecoaware-score-value { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+.ecoaware-score-value.high { color: var(--eco-positive); }
+.ecoaware-score-value.medium { color: var(--eco-warning); }
+.ecoaware-score-value.low { color: var(--eco-danger); }
+
+.ecoaware-progress { width: 100%; height: 6px; background: var(--eco-surface-2); border-radius: 3px; overflow: hidden; margin-bottom: 10px; }
+.ecoaware-progress-fill { height: 100%; border-radius: 3px; transition: width 0.8s cubic-bezier(0.16,1,0.3,1); }
+.ecoaware-progress-fill.high { background: linear-gradient(90deg, #16a34a, var(--eco-positive)); }
+.ecoaware-progress-fill.medium { background: linear-gradient(90deg, #d97706, var(--eco-warning)); }
+.ecoaware-progress-fill.low { background: linear-gradient(90deg, #dc2626, var(--eco-danger)); }
+
+/* ---------- Sustainability Label ---------- */
+.ecoaware-sustain-label-row { margin-bottom: 4px; display: flex; align-items: center; }
+.ecoaware-sustain-label {
+  display: inline-flex; padding: 3px 12px; border-radius: 12px; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.ecoaware-sustain-label.high { background: rgba(74,222,128,0.15); color: #4ade80; border: 1px solid rgba(74,222,128,0.25); }
+.ecoaware-sustain-label.medium-high { background: rgba(74,222,128,0.10); color: #86efac; border: 1px solid rgba(74,222,128,0.18); }
+.ecoaware-sustain-label.medium { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.2); }
+.ecoaware-sustain-label.low { background: rgba(248,113,113,0.12); color: #f87171; border: 1px solid rgba(248,113,113,0.2); }
+.ecoaware-sustain-label.very-low { background: rgba(248,113,113,0.18); color: #fca5a5; border: 1px solid rgba(248,113,113,0.3); }
+.ecoaware-sustain-label.neutral { background: rgba(148,163,184,0.12); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
+.ecoaware-sustain-label.unknown { background: rgba(148,163,184,0.12); color: #94a3b8; border: 1px solid rgba(148,163,184,0.2); }
+.ecoaware-sustain-note { font-size: 11px; color: var(--eco-text-dim); line-height: 1.4; margin-bottom: 6px; font-style: italic; }
+
+/* ---------- Confidence Badge ---------- */
+.ecoaware-confidence-badge {
+  display: inline-flex; align-items: center; padding: 2px 8px;
+  border-radius: 10px; font-size: 9px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.3px; margin-left: 6px;
+}
+.ecoaware-confidence-badge.HIGH { background: rgba(74,222,128,0.10); color: var(--eco-positive); border: 1px solid rgba(74,222,128,0.15); }
+.ecoaware-confidence-badge.MEDIUM { background: rgba(251,191,36,0.10); color: var(--eco-warning); border: 1px solid rgba(251,191,36,0.15); }
+.ecoaware-confidence-badge.LOW { background: rgba(248,113,113,0.10); color: var(--eco-danger); border: 1px solid rgba(248,113,113,0.15); }
+.ecoaware-confidence-badge.INSUFFICIENT { background: rgba(148,163,184,0.10); color: #94a3b8; border: 1px solid rgba(148,163,184,0.15); }
+
+/* ---------- Evidence Summary & Insights ---------- */
+.ecoaware-evidence-summary {
+  font-size: 12px; line-height: 1.5; color: var(--eco-text);
+  padding: 6px 10px; margin: 6px 0 2px;
+  background: rgba(74,222,128,0.04); border-radius: 6px;
+  border-left: 2px solid rgba(74,222,128,0.3);
+}
+.ecoaware-confidence-explain {
+  font-size: 11px; line-height: 1.4; color: var(--eco-text-dim);
+  padding: 5px 10px; margin-bottom: 6px;
+  background: rgba(148,163,184,0.04); border-radius: 6px;
+  border-left: 2px solid rgba(148,163,184,0.2);
+  font-style: italic;
+}
+.ecoaware-durability-insight {
+  font-size: 11.5px; line-height: 1.4; color: #60a5fa;
+  padding: 5px 10px; margin-bottom: 6px;
+  background: rgba(96,165,250,0.05); border-radius: 6px;
+  border-left: 2px solid rgba(96,165,250,0.25);
+}
+
+/* ---------- Intel Bar (compact chips) ---------- */
+.ecoaware-intel-bar {
+  display: flex; flex-direction: column; gap: 6px;
+}
+.ecoaware-intel-chip {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 12px; border-radius: 8px;
+  font-size: 12px; border: 1px solid;
+}
+.ecoaware-intel-chip-label {
+  color: var(--eco-text-dim); font-weight: 500;
+}
+.ecoaware-intel-chip-value {
+  font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; font-size: 11.5px;
+}
+.ecoaware-intel-chip.high {
+  background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.2);
+}
+.ecoaware-intel-chip.high .ecoaware-intel-chip-value { color: var(--eco-positive); }
+.ecoaware-intel-chip.medium {
+  background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.2);
+}
+.ecoaware-intel-chip.medium .ecoaware-intel-chip-value { color: var(--eco-warning); }
+.ecoaware-intel-chip.low {
+  background: rgba(248,113,113,0.08); border-color: rgba(248,113,113,0.2);
+}
+.ecoaware-intel-chip.low .ecoaware-intel-chip-value { color: var(--eco-danger); }
+
+/* ---------- Reasons ---------- */
+.ecoaware-reasons { display: flex; flex-direction: column; gap: 4px; }
+.ecoaware-reason { font-size: 11.5px; line-height: 1.4; padding: 3px 0; display: flex; align-items: flex-start; gap: 6px; }
+.ecoaware-reason-icon { flex-shrink: 0; margin-top: 1px; font-size: 10px; }
+.ecoaware-reason.positive { color: var(--eco-positive); }
+.ecoaware-reason.negative { color: var(--eco-danger); }
+.ecoaware-reason.warning { color: var(--eco-warning); }
+.ecoaware-reason.neutral { color: var(--eco-text-dim); }
+
+.ecoaware-reasons-toggle {
+  background: none; border: none; color: var(--eco-accent);
+  font-size: 11px; font-family: 'DM Sans', sans-serif;
+  cursor: pointer; padding: 4px 0; margin-top: 4px; transition: color 0.15s;
+}
+.ecoaware-reasons-toggle:hover { color: var(--eco-positive); }
+.ecoaware-reasons.collapsed { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.25s; }
+.ecoaware-reasons.expanded { max-height: 500px; opacity: 1; transition: all 0.25s; }
+
+/* ---------- AI Verdict ---------- */
+.ecoaware-verdict {
+  background: linear-gradient(135deg, rgba(74,222,128,0.06), rgba(34,197,94,0.03));
+  border: 1px solid rgba(74,222,128,0.15); border-radius: var(--eco-radius-sm); padding: 14px;
+}
+.ecoaware-verdict-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.ecoaware-verdict-label {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--eco-accent);
+  display: flex; align-items: center; gap: 6px;
+}
+.ecoaware-verdict-text { font-size: 13px; line-height: 1.55; color: var(--eco-text); font-style: italic; }
+.ecoaware-verdict-source { font-size: 10px; color: var(--eco-text-dim); margin-top: 8px; opacity: 0.7; }
+
+/* ---------- Voice Button ---------- */
+.ecoaware-voice-btn {
+  background: var(--eco-surface); border: 1px solid var(--eco-border);
+  border-radius: 6px; padding: 4px 10px; cursor: pointer; font-size: 14px;
+  transition: all 0.15s; color: var(--eco-text); line-height: 1;
+}
+.ecoaware-voice-btn:hover { border-color: var(--eco-accent-dim); background: var(--eco-surface-2); }
+.ecoaware-voice-btn.loading { opacity: 0.6; pointer-events: none; }
+
+/* ---------- Carbon Note ---------- */
+.ecoaware-carbon-note {
+  font-size: 10.5px; color: var(--eco-text-dim); line-height: 1.4;
+  padding: 8px 10px; border-radius: 6px;
+  background: rgba(148,163,184,0.04);
+  border: 1px dashed var(--eco-border);
+}
+
+/* ---------- AI Greenwash Flags ---------- */
+.ecoaware-ai-flags { margin-top: 6px; display: flex; flex-direction: column; gap: 3px; }
+
+/* ---------- Review Insight ---------- */
+.ecoaware-review-section {
+  background: linear-gradient(135deg, rgba(96,165,250,0.06), rgba(59,130,246,0.03));
+  border: 1px solid rgba(96,165,250,0.15); border-radius: var(--eco-radius-sm); padding: 14px;
+}
+.ecoaware-review-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;
+}
+.ecoaware-review-label {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; color: #60a5fa;
+  display: flex; align-items: center; gap: 6px;
+}
+.ecoaware-review-text { font-size: 12.5px; line-height: 1.55; color: var(--eco-text); }
+.ecoaware-review-meta {
+  font-size: 10.5px; color: var(--eco-text-dim); margin-top: 8px;
+  padding-top: 6px; border-top: 1px solid rgba(96,165,250,0.1);
+}
+
+/* ---------- Ask AI Agent CTA ---------- */
+.ecoaware-ask-ai {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 14px; border-radius: var(--eco-radius-sm);
+  background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(168,85,247,0.08));
+  border: 1px solid rgba(99,102,241,0.25);
+  text-decoration: none; color: var(--eco-text);
+  transition: all 0.2s; cursor: pointer;
+}
+.ecoaware-ask-ai:hover {
+  border-color: rgba(99,102,241,0.5);
+  background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(168,85,247,0.12));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99,102,241,0.15);
+}
+.ecoaware-ask-ai-icon { font-size: 20px; flex-shrink: 0; }
+.ecoaware-ask-ai-text { flex: 1; font-size: 11.5px; line-height: 1.45; color: var(--eco-text); }
+.ecoaware-ask-ai-text strong { color: #a78bfa; font-size: 12px; }
+.ecoaware-ask-ai-arrow { font-size: 16px; color: #a78bfa; flex-shrink: 0; }
+
+/* ---------- Divider ---------- */
+.ecoaware-divider { width: 100%; height: 1px; background: var(--eco-border); margin: 2px 0; }
+
+/* ---------- No Product ---------- */
+.ecoaware-no-product { display: flex; flex-direction: column; align-items: center; padding: 40px 24px; text-align: center; gap: 8px; }
+.ecoaware-no-product-icon { font-size: 36px; }
+.ecoaware-no-product-title { font-size: 14px; font-weight: 600; }
+.ecoaware-no-product-text { font-size: 12px; color: var(--eco-text-dim); line-height: 1.5; }
+.ecoaware-supported-sites { font-size: 11px; color: var(--eco-text-dim); margin-top: 8px; }
+
+/* ---------- Loading ---------- */
+.ecoaware-loading { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; gap: 14px; }
+.ecoaware-spinner { width: 32px; height: 32px; border: 3px solid var(--eco-border); border-top-color: var(--eco-accent); border-radius: 50%; animation: ecoaware-spin 0.8s linear infinite; }
+@keyframes ecoaware-spin { to { transform: rotate(360deg); } }
+.ecoaware-loading-text { font-size: 13px; color: var(--eco-text-dim); }
+.ecoaware-loading-sub { font-size: 11px; color: var(--eco-text-dim); opacity: 0.6; }
+
+/* ---------- Footer ---------- */
+.ecoaware-footer {
+  padding: 10px 18px 14px; border-top: 1px solid var(--eco-border);
+  text-align: center; font-size: 10px; color: var(--eco-text-dim); opacity: 0.6;
+}
+
+/* ---------- Floating Tab ---------- */
+#ecoaware-tab {
+  position: fixed; top: 50%; right: 0;
+  transform: translateY(-50%);
+  background: linear-gradient(135deg, var(--eco-accent-dim), #16a34a);
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(74,222,128,0.15);
+  z-index: 999998; font-family: 'DM Sans', -apple-system, sans-serif;
+  display: none; flex-direction: column; align-items: center;
+  cursor: grab; user-select: none;
+  transition: width 0.2s ease, box-shadow 0.2s;
+  overflow: hidden;
+}
+#ecoaware-tab.visible { display: flex; }
+#ecoaware-tab.dragging { cursor: grabbing; box-shadow: 0 8px 30px rgba(0,0,0,0.5); }
+#ecoaware-tab:hover { box-shadow: 0 6px 28px rgba(74,222,128,0.35); }
+.ecoaware-tab-content {
+  display: flex; align-items: center; justify-content: center;
+  padding: 10px 10px;
+  color: #fff; cursor: pointer;
+}
+.ecoaware-tab-icon { font-size: 18px; line-height: 1; }
+.ecoaware-tab-close {
+  display: none;
+  background: rgba(0,0,0,0.25); border: none;
+  color: rgba(255,255,255,0.8); cursor: pointer;
+  padding: 4px 10px; font-size: 12px; line-height: 1;
+  transition: all 0.15s; width: 100%;
+  text-align: center; border-top: 1px solid rgba(255,255,255,0.15);
+}
+#ecoaware-tab:hover .ecoaware-tab-close { display: block; }
+.ecoaware-tab-close:hover { background: rgba(220,38,38,0.6); color: #fff; }
+
+/* ---------- Slide-in ---------- */
+@keyframes ecoaware-slide-in { from { transform: translateX(380px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+#ecoaware-panel.ecoaware-animate-in { animation: ecoaware-slide-in 0.4s cubic-bezier(0.16,1,0.3,1) forwards; }

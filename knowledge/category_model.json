@@ -1,0 +1,84 @@
+{
+  "notes": "Missing certifications must NOT be treated as 'unsustainable' by default. They affect confidence and risk, category-dependently. food_produce should remain Neutral/Unknown. leather_goods missing certs = higher uncertainty + risk, not auto-low score.",
+  "category_detection_hints": {
+    "food_produce": ["potato","potatoes","apple","banana","onion","tomato","avocado","produce","fresh produce","vegetable","fruit","grocery","rice","bread","cereal","flour","sugar","honey","salmon","chicken breast"],
+    "electronics": ["laptop","notebook","monitor","tv","television","speaker","headphones","router","printer","phone","tablet","camera","smartwatch","console","computer","keyboard","mouse","charger"],
+    "appliances": ["washer","dryer","dishwasher","refrigerator","fridge","freezer","oven","microwave","air conditioner","heater","humidifier","vacuum","iron","air purifier","dehumidifier"],
+    "apparel_textiles": ["shirt","t-shirt","tee","hoodie","sweater","jacket","pants","jeans","dress","sock","socks","underwear","leggings","shorts","skirt","coat","blazer","clothing","apparel"],
+    "leather_goods": ["leather","genuine leather","full grain","full-grain","top grain","top-grain","suede","nubuck","wallet","belt","handbag","purse","briefcase"],
+    "furniture": ["desk","chair","table","shelf","bookcase","sofa","couch","bed frame","mattress","cabinet","dresser","furniture","ottoman"],
+    "home_goods": ["towel","blanket","pillow","bedding","sheet","cutlery","plate","cups","storage container","candle","vase","decor"],
+    "cleaning": ["cleaner","detergent","disinfectant","mop","broom","trash bag","paper towel","sponge","wipes"],
+    "bags": ["backpack","luggage","suitcase","tote bag","duffel","messenger bag","fanny pack","travel bag"],
+    "beauty_personal_care": ["shampoo","conditioner","soap","cleanser","lotion","moisturizer","serum","deodorant","toothpaste","sunscreen","makeup","fragrance","skincare","perfume"]
+  },
+  "buckets": ["certifications","materials","packaging","durability","energy","transparency","ethics","ai_context"],
+  "profiles": {
+    "food_produce": {
+      "weights": {"certifications":0.08,"materials":0.31,"packaging":0.09,"durability":0.00,"energy":0.00,"transparency":0.23,"ethics":0.19,"ai_context":0.10},
+      "cert_dependency": 0.1,
+      "transparency_importance": 0.2,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.10,"risk_increase":0.05}
+    },
+    "electronics": {
+      "weights": {"certifications":0.13,"materials":0.09,"packaging":0.03,"durability":0.27,"energy":0.20,"transparency":0.09,"ethics":0.09,"ai_context":0.10},
+      "cert_dependency": 0.5,
+      "transparency_importance": 0.25,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.35,"risk_increase":0.15}
+    },
+    "appliances": {
+      "weights": {"certifications":0.10,"materials":0.09,"packaging":0.03,"durability":0.27,"energy":0.23,"transparency":0.09,"ethics":0.09,"ai_context":0.10},
+      "cert_dependency": 0.55,
+      "transparency_importance": 0.2,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.35,"risk_increase":0.12}
+    },
+    "apparel_textiles": {
+      "weights": {"certifications":0.13,"materials":0.22,"packaging":0.05,"durability":0.18,"energy":0.00,"transparency":0.13,"ethics":0.19,"ai_context":0.10},
+      "cert_dependency": 0.45,
+      "transparency_importance": 0.6,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.35,"risk_increase":0.20}
+    },
+    "leather_goods": {
+      "weights": {"certifications":0.13,"materials":0.18,"packaging":0.04,"durability":0.22,"energy":0.00,"transparency":0.14,"ethics":0.19,"ai_context":0.10},
+      "cert_dependency": 0.55,
+      "transparency_importance": 0.75,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.45,"risk_increase":0.30}
+    },
+    "furniture": {
+      "weights": {"certifications":0.08,"materials":0.18,"packaging":0.04,"durability":0.31,"energy":0.00,"transparency":0.14,"ethics":0.15,"ai_context":0.10},
+      "cert_dependency": 0.3,
+      "transparency_importance": 0.35,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.25,"risk_increase":0.10}
+    },
+    "home_goods": {
+      "weights": {"certifications":0.13,"materials":0.18,"packaging":0.04,"durability":0.26,"energy":0.05,"transparency":0.14,"ethics":0.10,"ai_context":0.10},
+      "cert_dependency": 0.35,
+      "transparency_importance": 0.4,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.25,"risk_increase":0.12}
+    },
+    "cleaning": {
+      "weights": {"certifications":0.13,"materials":0.22,"packaging":0.08,"durability":0.00,"energy":0.00,"transparency":0.24,"ethics":0.23,"ai_context":0.10},
+      "cert_dependency": 0.4,
+      "transparency_importance": 0.55,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.30,"risk_increase":0.18}
+    },
+    "bags": {
+      "weights": {"certifications":0.08,"materials":0.18,"packaging":0.04,"durability":0.31,"energy":0.00,"transparency":0.14,"ethics":0.15,"ai_context":0.10},
+      "cert_dependency": 0.4,
+      "transparency_importance": 0.5,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.30,"risk_increase":0.18}
+    },
+    "beauty_personal_care": {
+      "weights": {"certifications":0.13,"materials":0.22,"packaging":0.08,"durability":0.00,"energy":0.00,"transparency":0.24,"ethics":0.23,"ai_context":0.10},
+      "cert_dependency": 0.4,
+      "transparency_importance": 0.65,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.30,"risk_increase":0.22}
+    },
+    "general": {
+      "weights": {"certifications":0.13,"materials":0.18,"packaging":0.04,"durability":0.26,"energy":0.10,"transparency":0.10,"ethics":0.09,"ai_context":0.10},
+      "cert_dependency": 0.3,
+      "transparency_importance": 0.35,
+      "missing_cert_behavior": {"score_penalty":false,"confidence_penalty":0.20,"risk_increase":0.10}
+    }
+  }
+}
