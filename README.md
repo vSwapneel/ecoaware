@@ -1,4 +1,4 @@
-# EcoAware 🌿
+# EcoAware
 
 **Know what you're really buying.** A Chrome extension that provides real-time sustainability analysis, greenwashing detection, and AI-powered insights while you shop on Amazon.
 
