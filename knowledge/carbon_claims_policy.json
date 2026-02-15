@@ -1,0 +1,28 @@
+{
+  "allowed_claims": [
+    "energy star certified (energy-efficiency, not carbon number)",
+    "made with recycled materials (only if % or scope stated)",
+    "packaging is recyclable (should be qualified)",
+    "reduced packaging (qualitative unless quantified)",
+    "designed for durability/repair (qualitative)",
+    "company has sustainability goals (qualitative)"
+  ],
+  "disallowed_claims": [
+    "ecoaware-generated carbon footprint numbers",
+    "estimated co2/co2e values inferred from price/weight/shipping",
+    "net zero/carbon neutral as verified fact without cited standard + boundary",
+    "claims that translate energy saved into co2 without a verified dataset"
+  ],
+  "required_conditions_for_numeric": [
+    "numeric carbon values must be explicitly present on the page OR from a verified dataset controlled by EcoAware",
+    "must include a clear boundary/scope indicator (cradle-to-gate vs cradle-to-grave)",
+    "must reference a method/standard (iso 14067, ghg protocol, or described lca methodology)",
+    "if relying on offsets, must have verifiable details (registry/retirement); otherwise treat as unverified"
+  ],
+  "phrasing_templates": {
+    "no_data": "No verified carbon-footprint data available. EcoAware does not estimate CO2.",
+    "qualitative_only": "Qualitative sustainability language found, but no verifiable carbon number with clear boundary/method.",
+    "numeric_with_source": "A carbon figure is shown on the page. EcoAware reports it as a quoted value and flags whether scope/method/verification cues are present."
+  },
+  "notes_for_judges": "EcoAware never estimates CO2. Numeric claims are only displayed if present on-page or from a verified registry. Even when present, EcoAware requires scope/boundary/method cues to treat them as credible."
+}

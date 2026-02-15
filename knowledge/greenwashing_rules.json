@@ -1,0 +1,274 @@
+[
+  {
+    "id": "VAGUE_GENERAL_GREEN_CLAIM",
+    "name": "Vague or unqualified general environmental benefit claim",
+    "category": "vague_unqualified",
+    "severity": 3,
+    "match": {
+      "any": ["eco-friendly","environmentally friendly","environment friendly","green product","planet friendly","good for the planet","sustainable choice","earth friendly"],
+      "all": [],
+      "none": ["fsc","energy star","usda organic","fairtrade","rainforest alliance","epeat","gots","oeko-tex","cradle to cradle","c2c","% recycled","percent recycled"]
+    },
+    "requires_proof_any": ["eco-friendly","environmentally friendly","planet friendly","green product","earth friendly","sustainable choice"],
+    "proof_terms_any": ["certified","certification","standard","verified","third-party","third party","evidence","report","lca","life cycle","scope","methodology","% ","percent","meets ","complies "],
+    "applicability": {"product_categories":["any"],"notes":"Broad claims are only treated as risk signals when not accompanied by specific, checkable supporting details."},
+    "rationale": "Guidance cautions that broad, unqualified environmental benefit claims are difficult to substantiate and can imply far-reaching benefits.",
+    "user_message": "Broad eco language (e.g., \"eco-friendly\") without clear supporting details. Look for a named standard or certification.",
+    "source_refs": ["FTC_16CFR_2604_GENERAL_BENEFIT","FTC_16CFR_2602_SUBSTANTIATION"]
+  },
+  {
+    "id": "ABSOLUTE_ZERO_IMPACT",
+    "name": "Absolute 'zero impact' or '100% sustainable' claim",
+    "category": "absolute_claims",
+    "severity": 4,
+    "match": {
+      "any": ["zero impact","no environmental impact","100% sustainable","fully sustainable","perfectly sustainable","completely sustainable","guilt-free","carbon negative"],
+      "all": [],
+      "none": []
+    },
+    "requires_proof_any": ["zero impact","no environmental impact","100% sustainable","fully sustainable","carbon negative"],
+    "proof_terms_any": ["verified","third-party","third party","methodology","lca","life cycle","scope","standard","iso 14067","ghg protocol","boundary","functional unit"],
+    "applicability": {"product_categories":["any"],"notes":"Absolute environmental claims are inherently high-risk unless tightly scoped and supported."},
+    "rationale": "Unqualified claims implying sweeping environmental benefits are likely to mislead unless narrowly defined and supported by credible evidence.",
+    "user_message": "Absolute sustainability language (e.g., \"zero impact\"). These claims are hard to support without clear scope and verification.",
+    "source_refs": ["FTC_16CFR_2604_GENERAL_BENEFIT","FTC_16CFR_2602_SUBSTANTIATION"]
+  },
+  {
+    "id": "UNCLEAR_COMPARATIVE_CLAIM",
+    "name": "Unclear comparative claim (greener / more sustainable)",
+    "category": "comparisons",
+    "severity": 3,
+    "match": {
+      "any": ["greener","more sustainable","better for the environment","cleaner","lower impact"],
+      "all": [],
+      "none": ["compared to","versus","vs ","than ","baseline","previous model","prior model"]
+    },
+    "requires_proof_any": ["greener","more sustainable","better for the environment","lower impact"],
+    "proof_terms_any": ["compared to","vs","versus","baseline","%","percent","test","study","methodology","standard"],
+    "applicability": {"product_categories":["any"],"notes":"Comparisons should be meaningful and explain what is being compared."},
+    "rationale": "Guidance emphasizes that comparisons should be clear, fair, and meaningful; vague 'greener' language without a defined baseline is a risk signal.",
+    "user_message": "Suggests the item is \"greener\" or \"more sustainable\" without clearly stating the comparison basis.",
+    "source_refs": ["UK_CMA_GREEN_CLAIMS_GUIDANCE_PDF","FTC_16CFR_2602_SUBSTANTIATION"]
+  },
+  {
+    "id": "MISSING_SUBSTANTIATION_SIGNAL",
+    "name": "Substantiation expected but missing",
+    "category": "no_proof",
+    "severity": 2,
+    "match": {
+      "any": ["sustainably sourced","responsibly sourced","ethically sourced","responsible sourcing","sustainably made","made sustainably"],
+      "all": [],
+      "none": ["standard","certified","certification","verified","audit","audited","third-party","third party","report","policy","traceability","chain of custody","coc "]
+    },
+    "requires_proof_any": ["sustainably sourced","responsibly sourced","ethically sourced","sustainably made","made sustainably"],
+    "proof_terms_any": ["certified","verified","audited","traceability","chain of custody","report","standard","policy"],
+    "applicability": {"product_categories":["any"],"notes":"A weak signal; lowers confidence and can raise risk, but does not imply the product is unsustainable."},
+    "rationale": "Environmental claims should be backed by a reasonable basis and should not leave consumers without meaningful support.",
+    "user_message": "Sourcing claims (e.g., \"responsibly sourced\") without pointing to a standard, audit, or verification.",
+    "source_refs": ["FTC_16CFR_2602_SUBSTANTIATION","UK_CMA_GREEN_CLAIMS_GUIDANCE_PDF"]
+  },
+  {
+    "id": "FAKE_OR_MEANINGLESS_ECO_LABEL",
+    "name": "Meaningless or undefined eco label / seal",
+    "category": "fake_label",
+    "severity": 4,
+    "match": {
+      "any": ["eco certified","eco-certified","green certified","green-certified","environmentally certified","eco seal","green seal of approval","eco badge"],
+      "all": [],
+      "none": ["energy star","fsc","usda organic","fairtrade","rainforest alliance","epeat","gots","oeko-tex","cradle to cradle","c2c","green seal (gs-","epa safer choice","watersense","greenguard"]
+    },
+    "requires_proof_any": ["eco certified","green certified","eco seal","eco badge","green seal of approval"],
+    "proof_terms_any": ["standard","criteria","certification body","certified by","verified by","audit","license","registry"],
+    "applicability": {"product_categories":["any"],"notes":"Flags that the label language is not a recognized certification in this pack."},
+    "rationale": "Guidance warns that seals/certifications can imply broad environmental benefit; vague or invented seals are a risk signal.",
+    "user_message": "Mentions an \"eco/green certification\" without a clearly identified recognized program. Potential greenwashing risk.",
+    "source_refs": ["FTC_16CFR_2606_CERT_SEALS","EU_COMMISSION_GREEN_CLAIMS_OVERVIEW"]
+  },
+  {
+    "id": "NATURAL_AS_ENVIRONMENTAL_CLAIM",
+    "name": "\"Natural\" used as environmental claim",
+    "category": "natural_claim",
+    "severity": 2,
+    "match": {
+      "any": ["all natural","100% natural","naturally derived"],
+      "all": [],
+      "none": ["ingredients","ingredient","usda organic","gots"]
+    },
+    "requires_proof_any": ["all natural","100% natural","naturally derived"],
+    "proof_terms_any": ["definition","standard","criteria","certified","methodology"],
+    "applicability": {"product_categories":["beauty_personal_care","home_goods","apparel_textiles","any"],"notes":"Avoids flagging purely descriptive food phrasing."},
+    "rationale": "Vague environmental framing can mislead; claims should be clear about what attribute is meant and be supported.",
+    "user_message": "Uses \"natural\" without defining what that means or providing a standard.",
+    "source_refs": ["UK_CMA_GREEN_CLAIMS_GUIDANCE_PDF","FTC_16CFR_2602_SUBSTANTIATION"]
+  },
+  {
+    "id": "CARBON_NEUTRAL_WITHOUT_BOUNDARY",
+    "name": "Carbon neutral / net zero without scope or boundary",
+    "category": "carbon_claims",
+    "severity": 4,
+    "match": {
+      "any": ["carbon neutral","carbon-neutral","net zero","net-zero","climate neutral","climate-neutral"],
+      "all": [],
+      "none": ["scope 1","scope 2","scope 3","cradle-to-grave","cradle to grave","cradle-to-gate","cradle to gate","boundary","system boundary","lca","verified","certified","carbon trust","ghg protocol","iso 14067"]
+    },
+    "requires_proof_any": ["carbon neutral","net zero","climate neutral"],
+    "proof_terms_any": ["boundary","scope","lca","methodology","verified","certified","iso 14067","ghg protocol","carbon trust"],
+    "applicability": {"product_categories":["any"],"notes":"Does not compute carbon; flags that boundary/scope language is missing."},
+    "rationale": "Credible carbon claims require clearly defined boundaries; 'carbon neutral' without scope/boundary cues is a high-risk signal.",
+    "user_message": "Claims carbon neutrality or net zero without clearly stating scope/boundary or verification method.",
+    "source_refs": ["GHG_PROTOCOL_PRODUCT_STANDARD_PDF","ISO_14067_ABSTRACT","FTC_16CFR_2602_SUBSTANTIATION"]
+  },
+  {
+    "id": "NUMERIC_CO2_WITHOUT_SOURCE",
+    "name": "Numeric CO2 claim without clear source/method",
+    "category": "carbon_claims",
+    "severity": 4,
+    "match": {
+      "any": ["kg co2","kg co2e","g co2","g co2e","tons co2","tco2e","co2e"],
+      "all": [],
+      "none": ["iso 14067","ghg protocol","lca","life cycle","boundary","system boundary","methodology","verified","third-party","third party","carbon trust"]
+    },
+    "requires_proof_any": ["co2e","kg co2","kg co2e","g co2","g co2e","tco2e"],
+    "proof_terms_any": ["verified","third-party","methodology","lca","scope","boundary","iso 14067","ghg protocol"],
+    "applicability": {"product_categories":["any"],"notes":"The deterministic engine must NOT compute carbon numbers."},
+    "rationale": "Numeric carbon footprint claims should be tied to defined methods; unsupported numbers can mislead consumers.",
+    "user_message": "Shows a CO2 number without explaining the method, boundary, or verification. Treat as unverified.",
+    "source_refs": ["ISO_14067_ABSTRACT","GHG_PROTOCOL_PRODUCT_STANDARD_PDF"]
+  },
+  {
+    "id": "OFFSET_CLAIM_WITHOUT_DETAILS",
+    "name": "Offsetting claim without timing/quality details",
+    "category": "carbon_offsets",
+    "severity": 3,
+    "match": {
+      "any": ["carbon offset","offsetting","we offset"],
+      "all": [],
+      "none": ["verified","third-party","registry","serial","retired","vintage","project","additional","two years","2 years"]
+    },
+    "requires_proof_any": ["carbon offset","offsetting","we offset"],
+    "proof_terms_any": ["registry","retired","serial","vintage","two years","additional","verified"],
+    "applicability": {"product_categories":["any"],"notes":"Flags missing clarity on offsets."},
+    "rationale": "Offset claims can mislead without clear disclosures including timing and substantiation.",
+    "user_message": "Mentions carbon offsets but lacks details like registry/retirement info or timing disclosures.",
+    "source_refs": ["FTC_16CFR_2602_SUBSTANTIATION"]
+  },
+  {
+    "id": "UNQUALIFIED_RECYCLABLE_CLAIM",
+    "name": "Recyclable claim without qualification",
+    "category": "packaging_recyclability",
+    "severity": 2,
+    "match": {
+      "any": ["recyclable","please recycle","recycle me"],
+      "all": [],
+      "none": ["may not be recyclable in your area","check locally","where facilities exist","not available in all areas","store drop-off","how2recycle"]
+    },
+    "requires_proof_any": ["recyclable","please recycle","recycle me"],
+    "proof_terms_any": ["where facilities exist","check locally","may not be recyclable","not available in all areas","percent","%"],
+    "applicability": {"product_categories":["any"],"notes":"Low/medium risk signal."},
+    "rationale": "Guidance advises qualifying recyclable claims when access to recycling facilities is not widespread.",
+    "user_message": "Says \"recyclable\" but doesn't clarify whether recycling is available in your area.",
+    "source_refs": ["FTC_16CFR_26012_RECYCLABLE"]
+  },
+  {
+    "id": "UNQUALIFIED_COMPOSTABLE",
+    "name": "Compostable claim without facility qualifier",
+    "category": "packaging_compostability",
+    "severity": 3,
+    "match": {
+      "any": ["compostable","industrial compostable","commercially compostable"],
+      "all": [],
+      "none": ["not available in all areas","facilities may not exist","requires industrial composting","check locally"]
+    },
+    "requires_proof_any": ["compostable","industrial compostable","commercially compostable"],
+    "proof_terms_any": ["requires industrial composting","check locally","facilities may not exist","astm","en 13432","bpi"],
+    "applicability": {"product_categories":["any"],"notes":"Common in packaging claims."},
+    "rationale": "Compostable claims can mislead if consumers lack access to appropriate composting facilities.",
+    "user_message": "Claims \"compostable\" without explaining whether special facilities are needed.",
+    "source_refs": ["FTC_16CFR_26012_RECYCLABLE"]
+  },
+  {
+    "id": "DEGRADABLE_OR_BIODEGRADABLE_UNQUALIFIED",
+    "name": "Biodegradable/degradable without qualification",
+    "category": "packaging_degradability",
+    "severity": 3,
+    "match": {
+      "any": ["biodegradable","degradable"],
+      "all": [],
+      "none": ["within one year","in compost","industrial compost","home compost","conditions apply"]
+    },
+    "requires_proof_any": ["biodegradable","degradable"],
+    "proof_terms_any": ["within one year","conditions apply","test","astm","iso"],
+    "applicability": {"product_categories":["any"],"notes":"Flags when biodegradability is asserted without timeframe."},
+    "rationale": "Unqualified degradable claims can mislead if typical disposal conditions do not support the implied decomposition.",
+    "user_message": "Uses \"biodegradable\" without stating timeframe or conditions (composting vs landfill).",
+    "source_refs": ["FTC_16CFR_2604_GENERAL_BENEFIT"]
+  },
+  {
+    "id": "NON_TOXIC_WITHOUT_EVIDENCE",
+    "name": "Non-toxic / chemical-safe claim without evidence",
+    "category": "health_environment",
+    "severity": 2,
+    "match": {
+      "any": ["non-toxic","nontoxic","chemical free","chemical-free","safe for the environment"],
+      "all": [],
+      "none": ["epa safer choice","safer choice","greenguard","oeko-tex","oeko tex","tested","certified"]
+    },
+    "requires_proof_any": ["non-toxic","nontoxic","chemical free","chemical-free"],
+    "proof_terms_any": ["tested","certified","standard","criteria","verified","epa","lab"],
+    "applicability": {"product_categories":["beauty_personal_care","home_goods","any"],"notes":"Lower severity; encourages looking for testing/certification."},
+    "rationale": "Claims implying broad non-toxicity should be supported by reliable evidence or clearly qualified.",
+    "user_message": "Uses \"non-toxic/chemical-free\" without pointing to testing or a recognized certification.",
+    "source_refs": ["FTC_16CFR_2602_SUBSTANTIATION","ISO_14021_ABSTRACT"]
+  },
+  {
+    "id": "IRRELEVANT_OZONE_OR_CFC_FREE",
+    "name": "Potentially irrelevant CFC-free/ozone claim",
+    "category": "irrelevant_claim",
+    "severity": 1,
+    "match": {
+      "any": ["cfc-free","cfc free","ozone friendly","ozone-safe","ozone safe"],
+      "all": [],
+      "none": []
+    },
+    "requires_proof_any": ["cfc-free","ozone friendly","ozone-safe"],
+    "proof_terms_any": ["contains","does not contain","standard","regulation","complies"],
+    "applicability": {"product_categories":["beauty_personal_care","home_goods","electronics","any"],"notes":"Low severity; mainly a relevance check."},
+    "rationale": "\"Free-of\" claims can confuse consumers if the substance is not typically associated with the product category.",
+    "user_message": "Highlights an older-style 'free-of' claim (e.g., CFC-free). Check whether it is relevant to this product.",
+    "source_refs": ["FTC_16CFR_2602_SUBSTANTIATION"]
+  },
+  {
+    "id": "SUPPLY_CHAIN_NO_DETAILS",
+    "name": "Supply-chain responsibility language without evidence",
+    "category": "transparency",
+    "severity": 2,
+    "match": {
+      "any": ["responsibly sourced","ethical sourcing","ethically sourced","responsible sourcing"],
+      "all": [],
+      "none": ["traceability","chain of custody","coc ","audit","audited","standard","policy","report"]
+    },
+    "requires_proof_any": ["responsibly sourced","ethical sourcing","ethically sourced"],
+    "proof_terms_any": ["traceability","chain of custody","audit","standard","policy","report"],
+    "applicability": {"product_categories":["leather_goods","apparel_textiles","home_goods","any"],"notes":"Especially relevant to higher-risk supply chains."},
+    "rationale": "Supply-chain claims should be supported with traceability/audit details where consumers would expect it.",
+    "user_message": "Uses sourcing/ethics language without pointing to traceability, audits, or a specific standard.",
+    "source_refs": ["UK_CMA_GREEN_CLAIMS_GUIDANCE_PDF","UK_CMA_SUPPLY_CHAIN_GUIDANCE"]
+  },
+  {
+    "id": "RENEWABLE_ENERGY_NO_SCOPE",
+    "name": "Renewable energy claim without scope",
+    "category": "energy_claims",
+    "severity": 2,
+    "match": {
+      "any": ["powered by renewable energy","made with renewable energy","100% renewable energy","renewable-powered"],
+      "all": [],
+      "none": ["manufacturing","facility","plant","scope","certificate","rec","power purchase"]
+    },
+    "requires_proof_any": ["powered by renewable energy","made with renewable energy","100% renewable energy"],
+    "proof_terms_any": ["facility","manufacturing","certificate","rec","power purchase","scope"],
+    "applicability": {"product_categories":["electronics","apparel_textiles","home_goods","any"],"notes":"Flags missing scope detail."},
+    "rationale": "Renewable energy claims can be interpreted differently depending on whether they refer to manufacturing, operations, or the full lifecycle.",
+    "user_message": "Mentions renewable energy but doesn't specify scope (e.g., manufacturing facility vs full lifecycle).",
+    "source_refs": ["UK_CMA_GREEN_CLAIMS_GUIDANCE_PDF","FTC_16CFR_2602_SUBSTANTIATION"]
+  }
+]
